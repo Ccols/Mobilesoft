@@ -1,38 +1,18 @@
-import React from 'react';
-import { View, Text } from 'react-native';
-import firebase from 'react-native-firebase';
-
-class App extends React.Component {
-
-  constructor() {
-    super();
-    this.state = {
-      isAuthenticated: false,
-    };
+import React from 'react'
+import { StyleSheet, Platform, Image, Text, View } from 'react-native'
+import { createSwitchNavigator, createAppContainer } from 'react-navigation'// import the different screens
+import loading from './screens/Loading'
+import signup from './screens/SignUp'
+import login from './screens/Login'
+import main from './screens/Main'// create our app's navigation stack
+export default createAppContainer(createSwitchNavigator(
+  {
+    Loading: loading,
+    SignUp: signup,
+    Login: login,
+    Main: main
+  },
+  {
+    initialRouteName: 'SignUp'
   }
-
-  componentDidMount() {
-    firebase.auth().signInAnonymously()
-      .then(() => {
-        this.setState({
-          isAuthenticated: true,
-        });
-      });
-  }
-
-  render() {
-    // If the user has not authenticated
-    if (!this.state.isAuthenticated) {
-      return null;
-    }
-
-    return (
-      <View>
-        <Text>Welcome to my awesome app!</Text>
-      </View>
-    );
-  }
-
-}
-
-export default App;
+));
