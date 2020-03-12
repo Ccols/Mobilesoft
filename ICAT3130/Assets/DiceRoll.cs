@@ -10,7 +10,7 @@ public class DiceRoll : MonoBehaviour
 
     public void RandomGenerate()
     {
-        TheNumber = Random.Range(0, 7);
+        TheNumber = Random.Range(1, 7);
         Textbox.GetComponent<Text>().text = "    " + TheNumber;
     }
 
