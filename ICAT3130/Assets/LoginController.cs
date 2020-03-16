@@ -21,6 +21,9 @@ public class LoginController : MonoBehaviour
     public GameObject inputfieldPassword;
     public UnityEngine.Events.UnityEvent LoggedIn;
 
+    /*
+     * Stores the information from the input fields
+     */
     public void StoreInformation()
     {
         email = inputfieldEmail.GetComponent<InputField>().text;
@@ -37,7 +40,9 @@ public class LoginController : MonoBehaviour
     }
 
 
-
+    /*
+     * Checks all the dependencies and that firebase is okey to go on.
+     */
     IEnumerator CheckDependencies()
 
     {
@@ -168,7 +173,9 @@ public class LoginController : MonoBehaviour
         StartCoroutine(signupProcess());
 
     }
-
+    /*
+     * Function that tries to login to firebase.
+     */
     IEnumerator signupProcess()
     {
 
